@@ -1,6 +1,105 @@
-import React, { useState } from 'react';
-import { motion } from 'motion/react';
+import React, { useState, useRef } from 'react';
+import { motion, useMotionValue, useSpring } from 'motion/react';
 import { Brain, Code, Database, Globe, Cpu } from 'lucide-react';
+
+// Inner component to handle magnetic and spotlight states per card
+const LayerCard = ({ layer, i, hoveredLayer, setHoveredLayer }: any) => {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [isHovered, setIsHovered] = useState(false);
+
+  // Spring physics for smooth magnetic return
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const mouseXSpring = useSpring(x, { stiffness: 150, damping: 15 });
+  const mouseYSpring = useSpring(y, { stiffness: 150, damping: 15 });
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    const localX = e.clientX - rect.left;
+    const localY = e.clientY - rect.top;
+    setMousePosition({ x: localX, y: localY });
+
+    // Magnetic effect (slight physical pull towards cursor)
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    x.set((localX - centerX) / 10);
+    y.set((localY - centerY) / 10);
+  };
+
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+    setHoveredLayer(i);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+    setHoveredLayer(null);
+    x.set(0);
+    y.set(0);
+  };
+
+  return (
+    <motion.div
+      ref={cardRef}
+      onMouseMove={handleMouseMove}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      style={{
+        x: mouseXSpring,
+        y: mouseYSpring,
+        borderLeftColor: i === 0 ? '#ac89ff' : i === 1 ? '#ffc107' : i === 2 ? '#00bcd4' : i === 3 ? '#4caf50' : 'inherit'
+      }}
+      className="relative p-8 rounded-xl bg-[#111318] border border-outline-variant/10 border-l-4 cursor-default flex items-start gap-6 overflow-hidden group shadow-lg drop-shadow-lg"
+    >
+      {/* Background radial glow following cursor */}
+      {isHovered && (
+        <div
+          className="absolute inset-0 pointer-events-none transition-opacity duration-300 z-0"
+          style={{
+            background: `radial-gradient(400px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(255, 193, 7, 0.08), transparent 40%)`,
+          }}
+        />
+      )}
+
+      {/* Active Spotlight Border Glow following cursor */}
+      {isHovered && (
+        <div
+          className="absolute inset-0 pointer-events-none z-10 rounded-xl transition-opacity duration-300"
+          style={{
+            background: `radial-gradient(300px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(255, 193, 7, 0.5), transparent 40%)`,
+            WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+            WebkitMaskComposite: 'xor',
+            maskComposite: 'exclude',
+            padding: '1px' // Border width for the spotlight
+          }}
+        />
+      )}
+
+      {/* Card Content */}
+      <div className="p-3 rounded-lg bg-surface-high border border-outline-variant/10 relative z-20 group-hover:scale-110 transition-transform duration-300">
+        <layer.icon className="w-6 h-6 text-primary" />
+      </div>
+      <div className="flex-1 relative z-20">
+        <div className="font-label text-on-surface-variant text-[10px] mb-2 uppercase tracking-widest group-hover:text-primary/70 transition-colors">Layer {layer.id}</div>
+        <h3 className="font-headline text-2xl font-bold mb-3">{layer.title}</h3>
+        <p className="text-on-surface-variant text-sm leading-relaxed mb-0">{layer.desc}</p>
+
+        <motion.div
+          initial={false}
+          animate={{ height: hoveredLayer === i ? "auto" : 0, opacity: hoveredLayer === i ? 1 : 0 }}
+          transition={{ duration: 0.3 }}
+          className="overflow-hidden"
+        >
+          <p className="text-primary/80 text-sm mt-4 leading-relaxed pt-4 border-t border-outline-variant/10">
+            {layer.details}
+          </p>
+        </motion.div>
+      </div>
+    </motion.div>
+  );
+};
 
 const LayersSection = () => {
   const [hoveredLayer, setHoveredLayer] = useState<number | null>(null);
@@ -94,34 +193,13 @@ const LayersSection = () => {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div className="space-y-4">
             {layers.map((layer, i) => (
-              <motion.div
-                key={i}
-                onMouseEnter={() => setHoveredLayer(i)}
-                onMouseLeave={() => setHoveredLayer(null)}
-                whileHover={{ x: 10 }}
-                className="p-8 rounded-xl bg-surface border border-outline-variant/5 border-l-4 transition-all cursor-default flex items-start gap-6"
-                style={{ borderLeftColor: i === 0 ? '#ac89ff' : i === 1 ? '#ffc107' : i === 2 ? '#00bcd4' : i === 3 ? '#4caf50' : 'inherit' }}
-              >
-                <div className="p-3 rounded-lg bg-surface-high border border-outline-variant/10">
-                  <layer.icon className="w-6 h-6 text-primary" />
-                </div>
-                <div className="flex-1">
-                  <div className="font-label text-on-surface-variant text-[10px] mb-2 uppercase tracking-widest">Layer {layer.id}</div>
-                  <h3 className="font-headline text-2xl font-bold mb-3">{layer.title}</h3>
-                  <p className="text-on-surface-variant text-sm leading-relaxed mb-0">{layer.desc}</p>
-
-                  <motion.div
-                    initial={false}
-                    animate={{ height: hoveredLayer === i ? "auto" : 0, opacity: hoveredLayer === i ? 1 : 0 }}
-                    transition={{ duration: 0.3 }}
-                    className="overflow-hidden"
-                  >
-                    <p className="text-primary/80 text-sm mt-4 leading-relaxed pt-4 border-t border-outline-variant/10">
-                      {layer.details}
-                    </p>
-                  </motion.div>
-                </div>
-              </motion.div>
+              <LayerCard 
+                key={i} 
+                layer={layer} 
+                i={i} 
+                hoveredLayer={hoveredLayer} 
+                setHoveredLayer={setHoveredLayer} 
+              />
             ))}
           </div>
 

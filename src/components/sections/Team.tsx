@@ -90,7 +90,7 @@ const Team = () => {
                 <div className="aspect-square rounded-xl bg-surface mb-6 overflow-hidden border border-primary/20 relative">
                   <img
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    style={{ objectPosition: 'center 30%' }}
+                    style={{ objectPosition: 'center center' }}
                     src={member.img}
                     alt={member.name}
                     referrerPolicy="no-referrer"
