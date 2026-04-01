@@ -36,11 +36,25 @@ const Process = () => (
           { id: "05", title: "Monitoring", desc: "Continuous AI optimization and performance reporting." }
         ].map((step, i) => (
           <div key={i} className="flex-1 text-center group">
-            <div className="w-16 h-16 rounded-full bg-surface border-2 border-primary flex items-center justify-center font-headline text-xl font-bold mx-auto mb-6 group-hover:bg-primary group-hover:text-on-primary transition-all text-primary">
-              {step.id}
-            </div>
-            <h5 className="font-headline font-bold mb-2">{step.title}</h5>
-            <p className="text-on-surface-variant text-sm px-4">{step.desc}</p>
+            <motion.div 
+              whileHover={{ scale: 1.1, y: -5 }}
+              className="relative w-20 h-20 rounded-2xl bg-background border border-primary/20 flex flex-col items-center justify-center font-headline text-2xl font-black mx-auto mb-6 group-hover:border-primary group-hover:shadow-[0_0_30px_rgba(255,193,7,0.4)] transition-all text-primary overflow-hidden shadow-lg shadow-black/50"
+            >
+              {/* Subtle inner animated ring */}
+              <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-transparent via-primary to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              
+              {/* Large faded background number for depth */}
+              <span className="absolute text-[64px] font-black text-primary/5 -right-2 -bottom-4 group-hover:scale-110 group-hover:text-primary/10 transition-transform duration-500 pointer-events-none select-none">
+                {step.id}
+              </span>
+              
+              {/* Actual Number */}
+              <span className="relative z-10 drop-shadow-[0_0_8px_rgba(255,193,7,0.8)] group-hover:drop-shadow-[0_0_12px_rgba(255,193,7,1)]">
+                {step.id}
+              </span>
+            </motion.div>
+            <h5 className="font-headline font-bold mb-2 text-lg group-hover:text-primary transition-colors">{step.title}</h5>
+            <p className="text-on-surface-variant text-sm px-4 leading-relaxed">{step.desc}</p>
           </div>
         ))}
       </div>
