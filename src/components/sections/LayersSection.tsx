@@ -41,7 +41,7 @@ const LayersSection = () => {
   ];
 
   return (
-    <section id="platform" className="py-32 px-6 overflow-hidden relative">
+    <section id="platform" className="py-12 md:py-8 min-h-[90vh] flex items-center px-6 overflow-hidden relative">
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden opacity-10">
         <svg viewBox="0 0 1440 320" className="absolute bottom-0 w-full h-full">
           <motion.path
@@ -71,8 +71,8 @@ const LayersSection = () => {
         </svg>
       </div>
 
-      <div className="max-w-screen-2xl mx-auto relative z-10">
-        <div className="w-fit mb-20 group">
+      <div className="max-w-screen-2xl w-full mx-auto relative z-10">
+        <div className="w-fit mb-6 group">
           <h2 className="font-headline text-4xl md:text-5xl font-bold mb-2 tracking-tight">Four Layers. One Intelligence.</h2>
           <div className="relative h-4 w-full overflow-hidden mb-6">
             <svg viewBox="0 0 200 20" className="w-full h-full text-primary fill-none stroke-current stroke-2">
@@ -91,23 +91,23 @@ const LayersSection = () => {
           </div>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          <div className="space-y-4">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+          <div className="space-y-3">
             {layers.map((layer, i) => (
               <motion.div
                 key={i}
                 onMouseEnter={() => setHoveredLayer(i)}
                 onMouseLeave={() => setHoveredLayer(null)}
                 whileHover={{ x: 10 }}
-                className="p-8 rounded-xl bg-surface border border-outline-variant/5 border-l-4 transition-all cursor-default flex items-start gap-6"
+                className="p-4 md:p-5 rounded-xl bg-surface border border-outline-variant/5 border-l-4 transition-all cursor-default flex items-start gap-4"
                 style={{ borderLeftColor: i === 0 ? '#ac89ff' : i === 1 ? '#ffc107' : i === 2 ? '#00bcd4' : i === 3 ? '#4caf50' : 'inherit' }}
               >
                 <div className="p-3 rounded-lg bg-surface-high border border-outline-variant/10">
                   <layer.icon className="w-6 h-6 text-primary" />
                 </div>
                 <div className="flex-1">
-                  <div className="font-label text-on-surface-variant text-[10px] mb-2 uppercase tracking-widest">Layer {layer.id}</div>
-                  <h3 className="font-headline text-2xl font-bold mb-3">{layer.title}</h3>
+                  <div className="font-label text-on-surface-variant text-[10px] mb-1 uppercase tracking-widest">Layer {layer.id}</div>
+                  <h3 className="font-headline text-xl md:text-2xl font-bold mb-2">{layer.title}</h3>
                   <p className="text-on-surface-variant text-sm leading-relaxed mb-0">{layer.desc}</p>
 
                   <motion.div
@@ -126,7 +126,7 @@ const LayersSection = () => {
           </div>
 
           <div className="relative flex justify-center">
-            <div className="aspect-square w-full max-w-md glass-card rounded-full border border-primary/10 flex items-center justify-center p-12">
+            <div className="aspect-square w-full max-w-[380px] glass-card rounded-full border border-primary/10 flex items-center justify-center p-8 md:p-10">
               <motion.div
                 animate={{ rotate: 360 }}
                 transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
@@ -141,19 +141,19 @@ const LayersSection = () => {
                     "left-0 top-1/2 -translate-x-1/2 -translate-y-1/2"
                   ];
                   return (
-                    <div key={idx} className={`absolute ${positions[idx]} p-3 glass-card rounded-full border border-primary/20 bg-surface/80 backdrop-blur-md z-20`}>
+                    <div key={idx} className={`absolute ${positions[idx]} p-4 glass-card rounded-full border border-primary/20 bg-surface/80 backdrop-blur-md z-20`}>
                       <motion.div
                         animate={{ rotate: -360 }}
                         transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
                       >
-                        <layer.icon className="w-5 h-5 text-primary" />
+                        <layer.icon className="w-10 h-10 text-primary" />
                       </motion.div>
                     </div>
                   );
                 })}
 
                 <div className="w-full h-full rounded-full bg-gradient-to-br from-primary/10 to-tertiary/10 flex items-center justify-center">
-                  <Cpu className="w-16 h-16 text-primary" />
+                  <Cpu className="w-20 h-20 text-primary" />
                 </div>
               </motion.div>
             </div>
