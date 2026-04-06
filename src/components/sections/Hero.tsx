@@ -1,26 +1,16 @@
 
 import React from 'react';
 import { motion } from 'motion/react';
+import InteractiveDotWave from '../ui/InteractiveDotWave';
 
 const Hero = ({ onOpenModal }: { onOpenModal: (type: string) => void }) => (
   <section className="relative pt-40 pb-24 px-6 flex flex-col items-center justify-center text-center min-h-[80vh] overflow-hidden">
-    {/* AI Layered Architecture / Data Foundation graphic video */}
-    <video
-      autoPlay
-      loop
-      muted
-      playsInline
-      className="absolute inset-0 w-full h-full object-cover z-0 opacity-30 select-none pointer-events-none"
-      style={{
-        filter: "sepia(100%) hue-rotate(5deg) saturate(300%) contrast(150%)",
-        mixBlendMode: "screen"
-      }}
-    >
-      {/* Abstract flying through high-tech AI layers/data streams */}
-      <source src="https://videos.pexels.com/video-files/3163534/3163534-uhd_3840_2160_30fps.mp4" type="video/mp4" />
-    </video>
-    <div className="absolute inset-0 z-0 bg-background/70">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-primary/10 rounded-full blur-[150px]"></div>
+    {/* Interactive dot wave background */}
+    <InteractiveDotWave />
+
+    {/* Ambient glow orb on top of dots */}
+    <div className="absolute inset-0 z-[1] pointer-events-none">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-primary/4 rounded-full blur-[140px]"></div>
     </div>
 
     <motion.div
