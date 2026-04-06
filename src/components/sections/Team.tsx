@@ -16,35 +16,35 @@ const Team = () => {
       name: "Dev",
       role: "Founding Partner",
       img: devProfile,
-      bio: "Founding Partner with 20+ years of expertise in stratified AI architecture and neural system orchestration. Architect of the core intelligence layers at Dev AI Labs.",
+      bio: "Building technology ecosystems since 2008. Leads overall strategy, product vision, and business architecture across all Dev AI Labs verticals from Hyderabad.",
       color: "from-primary/20 via-primary/40 to-primary/20"
     },
     {
       name: "Preetham",
       role: "CTO",
       img: preethamProfile,
-      bio: "Chief Technology Officer specializing in distributed computing and high-throughput data infrastructure. Former lead architect for global financial analytics systems.",
+      bio: "Leads the core AI research function — model selection, fine-tuning strategy, and domain-specific training pipelines that power the six product suite.",
       color: "from-indigo-500/20 via-indigo-500/40 to-indigo-500/20"
     },
     {
       name: "Vamsi",
       role: "AI Lead",
       img: vamsiProfile,
-      bio: "AI Lead with a PhD in deep reinforcement learning. Pioneering autonomous flight simulations and real-time decision models for the UAV sector.",
+      bio: "Drives institutional partnerships, enterprise client acquisition, and sector-specific deployment across drone training, geospatial, and education verticals.",
       color: "from-cyan-500/20 via-cyan-500/40 to-cyan-500/20"
     },
     {
       name: "Poorvek",
       role: "Growth",
       img: poorvekProfile,
-      bio: "Head of Growth focused on B2B strategic expansion. Expert in scaling enterprise AI across aerospace, defense, and global logistics markets.",
+      bio: "Heads the engineering team responsible for platform architecture, API development, system integrations, and the technical delivery of all Dev AI Labs products.",
       color: "from-emerald-500/20 via-emerald-500/40 to-emerald-500/20"
     },
     {
       name: "Kamala",
       role: "Product Strategy",
       img: kamalaProfile,
-      bio: "Product Strategy lead bridging deep tech with human-centric interfaces. Transforming complex cognitive engines into intuitive business solutions.",
+      bio: "Manages financial planning, compliance, and operational budgeting across the company. Oversees revenue reporting, vendor management, and investor-ready financial documentation.",
       color: "from-tertiary/20 via-tertiary/40 to-tertiary/20"
     }
   ];

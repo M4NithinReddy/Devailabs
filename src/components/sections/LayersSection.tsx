@@ -10,7 +10,7 @@ const LayersSection = () => {
       id: "01",
       title: "AI Intelligence",
       desc: "Neural engines and cognitive models that drive decision making.",
-      details: "Leveraging large-scale transformer models and proprietary reinforcement learning to provide real-time decision synthesis and predictive accuracy at the edge.",
+      details: "The core reasoning and language models that power all products. Custom fine-tuning, domain-specific training, and decision logic built for real-world industry contexts — not generic consumer use cases.",
       color: "border-tertiary",
       icon: Brain
     },
@@ -18,7 +18,7 @@ const LayersSection = () => {
       id: "02",
       title: "Software Platform",
       desc: "Orchestration middleware connecting intelligence to interfaces.",
-      details: "A unified orchestration layer built with high-availability microservices, providing seamless API endpoints for complex intelligence workflows and cross-platform sync.",
+      details: "The application and API layer where businesses integrate AI into their workflows. SDKs, dashboards, automation workflows, and connectors that plug into existing operations without replacing them.",
       color: "border-primary",
       icon: Code
     },
@@ -26,7 +26,7 @@ const LayersSection = () => {
       id: "03",
       title: "Data Infrastructure",
       desc: "Scalable pipelines ensuring data integrity and processing speeds.",
-      details: "End-to-end data lifecycle management featuring automated ETL pipelines, vector database indexing, and ultra-low latency retrieval for high-stakes environments.",
+      details: "Structured pipelines for ingesting, processing, and enriching data from drone surveys, field operations, customer interactions, and business systems. The foundation for accurate AI outputs.",
       color: "border-info",
       icon: Database
     },
@@ -34,7 +34,7 @@ const LayersSection = () => {
       id: "04",
       title: "Industry Application",
       desc: "Customized endpoints tailored for specific vertical needs.",
-      details: "Vertical-specific cognitive tools designed for mission-critical operations in aerospace, logistics, and strategic business sectors with specialized UX.",
+      details: "Deployment-ready vertical solutions for drones, agriculture, geospatial services, training platforms, media, and enterprise sales. Built for Indian and Southeast Asian market conditions.",
       color: "border-success",
       icon: Globe
     }
