@@ -5,52 +5,64 @@ import { Video, Building2, Rotate3D } from 'lucide-react';
 const UseCases = () => {
   const [activeCase, setActiveCase] = useState<string | null>(null);
 
-  const cases: Array<{ id: string, title: string, desc: string, details: string, img?: string, icon?: any }> = [
+  const cases: Array<{ id: string, title: string, subtitle?: string, desc: string, details: string, img?: string, icon?: any, link?: string }> = [
     {
       id: "drone",
       title: "Drone Training",
-      desc: "Simulation-based AI for autonomous flight training.",
-      details: "Advanced simulation environments featuring procedural terrain generation and multi-agent reinforcement learning for risk-free autonomous flight operations.",
-      img: "https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&q=80&w=2070"
+      subtitle: "India Drone Academy",
+      desc: "Comprehensive AI solutions for flight academies.",
+      details: "AI voice and chat handles student enquiries, fee reminders, batch scheduling, and post-training placement follow-ups — freeing the academy operations team for higher-value work.",
+      img: "/public/images/1st img.png",
+      link: "https://indiadroneacademy.com/"
     },
     {
       id: "uav",
       title: "UAV Services",
-      desc: "Real-time data processing for unmanned aerial fleets.",
-      details: "End-to-end aerial intelligence for large-scale infrastructure monitoring, featuring real-time thermal analysis and automated path optimization.",
-      img: "https://images.unsplash.com/photo-1473968512647-3e447244af8f?auto=format&fit=crop&q=80&w=2070"
+      subtitle: "IPage UMS",
+      desc: "AI-driven sales and project management for UAV fleets.",
+      details: "AI sales pipeline tracks and follows up with survey project leads across agriculture, infrastructure, and defence verticals. Automate proposal reminders and client check-ins.",
+      img: "https://images.unsplash.com/photo-1473968512647-3e447244af8f?auto=format&fit=crop&q=80&w=2070",
+      link: "https://ipageums.com/"
     },
     {
       id: "sim",
       title: "Simulation",
-      desc: "Large-scale digital twins and predictive modeling.",
-      details: "Industrial-grade digital twin architecture that models physical assets with millimeter precision to stress test structural integrity and maintenance cycles.",
+      subtitle: "IPage Drone Simulator",
+      desc: "Marketing and lead conversion for drone simulation.",
+      details: "Dev AI Chat drives demo download conversions and licence inquiries. Marketing AI generates targeted outreach to RPTOs, engineering colleges, and defence organisations.",
       img: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=80&w=2070",
-      icon: null
+      icon: null,
+      link: "https://www.dronesimulator.pro/"
     },
     {
       id: "media",
-      title: "Media",
-      desc: "Automated editing and content metadata tagging.",
-      details: "Generative AI pipelines for storyboarding, scene composition, and dynamic color grading to transform concepts into cinema-quality visual sequences.",
+      title: "Media Platform",
+      subtitle: "Drone TV",
+      desc: "AI content tools for media creators and teams.",
+      details: "AI marketing and content tools assist creators and media teams in producing descriptions, SEO-optimised video titles, and audience engagement campaigns at scale.",
       img: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&q=80&w=2070",
-      icon: Video
+      icon: Video,
+      link: "https://www.dronetv.in/"
     },
     {
       id: "b2b",
-      title: "B2B",
-      desc: "Enterprise resource optimization and logistics.",
-      details: "Strategic intelligence for high-ticket corporate ecosystems, automating complex contract analysis and global market sentiment tracking.",
+      title: "B2B Marketplace",
+      subtitle: "Virel Biz",
+      desc: "Insight and sales AI for marketplace logistics.",
+      details: "Insight and sales AI helps marketplace operators understand buyer patterns, identify high-value vendor categories, and automate follow-up sequences for active listings.",
       img: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=2070",
-      icon: Building2
+      icon: Building2,
+      link: "https://vixelbiz.com/"
     },
     {
       id: "3d",
       title: "3D Visualisation",
-      desc: "Advanced rendering for geospatial analysis.",
-      details: "Ultra-high-resolution spatial rendering featuring real-time ray tracing and interactive AR/VR endpoints to visualize complex 3D data structures.",
+      subtitle: "IPage Vision",
+      desc: "Project coordination and briefing automation.",
+      details: "Automate client briefing capture, project status updates, and delivery notifications. Dev AI reduces coordination overhead for the visualisation team across concurrent projects.",
       img: "https://images.unsplash.com/photo-1617802690992-15d93263d3a9?auto=format&fit=crop&q=80&w=2070",
-      icon: Rotate3D
+      icon: Rotate3D,
+      link: "https://www.ipagevision.com/"
     }
   ];
 
@@ -76,7 +88,7 @@ const UseCases = () => {
               </svg>
             </div>
           </div>
-          <p className="text-on-surface-variant max-w-xs md:max-w-sm text-xs">Click any scenario to explore the deep technical background of our deployments.</p>
+          <p className="text-on-surface-variant max-w-xs md:max-w-sm text-xs">Hover over any scenario to explore the deep technical background of our deployments.</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
@@ -84,8 +96,14 @@ const UseCases = () => {
             <motion.div
               key={item.id}
               whileHover={{ y: -3 }}
-              onClick={() => setActiveCase(activeCase === item.id ? null : item.id)}
-              className="group relative aspect-video md:aspect-[16/9] rounded-2xl overflow-hidden bg-surface cursor-pointer border border-outline-variant/10"
+              onMouseEnter={() => setActiveCase(item.id)}
+              onMouseLeave={() => setActiveCase(null)}
+              onClick={() => {
+                if (item.link) {
+                  window.open(item.link, '_blank', 'noopener,noreferrer');
+                }
+              }}
+              className="group relative aspect-video md:aspect-[16/9] rounded-2xl overflow-hidden bg-surface cursor-pointer border border-outline-variant/10 shadow-lg shadow-black/20 hover:border-primary/30 transition-colors"
             >
               {/* Background Image */}
               {item.img && (
@@ -128,7 +146,10 @@ const UseCases = () => {
                   className="overflow-hidden mt-4"
                 >
                   <div className="pt-4 border-t border-primary/20">
-                    <p className="text-primary text-xs leading-relaxed font-medium">
+                    {item.subtitle && (
+                      <p className="text-primary font-headline font-extrabold text-base mb-2 tracking-wide uppercase">{item.subtitle}</p>
+                    )}
+                    <p className="text-on-surface-variant text-xs leading-relaxed font-medium">
                       {item.details}
                     </p>
                   </div>
