@@ -1,10 +1,15 @@
 import React from 'react';
 import { motion } from 'motion/react';
+import InteractiveDotWave from '../ui/InteractiveDotWave';
 
 const Hero = ({ onOpenModal }: { onOpenModal: (type: string) => void }) => (
   <section className="relative pt-40 pb-24 px-6 flex flex-col items-center justify-center text-center min-h-[80vh] overflow-hidden">
-    <div className="absolute inset-0 z-0">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[120px]"></div>
+    {/* Interactive dot wave background */}
+    <InteractiveDotWave />
+
+    {/* Ambient glow orb on top of dots */}
+    <div className="absolute inset-0 z-[1] pointer-events-none">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-primary/4 rounded-full blur-[140px]"></div>
     </div>
 
     <motion.div
