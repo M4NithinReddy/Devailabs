@@ -5,7 +5,7 @@ import { Video, Building2, Rotate3D } from 'lucide-react';
 const UseCases = () => {
   const [activeCase, setActiveCase] = useState<string | null>(null);
 
-  const cases = [
+  const cases: Array<{ id: string, title: string, desc: string, details: string, img?: string, icon?: any }> = [
     {
       id: "drone",
       title: "Drone Training",
@@ -55,15 +55,15 @@ const UseCases = () => {
   ];
 
   return (
-    <section id="use-cases" className="py-32 px-6">
-      <div className="max-w-screen-2xl mx-auto">
-        <div className="mb-20 flex flex-col md:flex-row md:items-end justify-between gap-8">
+    <section id="use-cases" className="py-6 md:py-4 min-h-[90vh] flex flex-col justify-center px-6">
+      <div className="max-w-screen-2xl mx-auto w-full">
+        <div className="mb-3 md:mb-4 flex flex-col md:flex-row md:items-end justify-between gap-3">
           <div className="w-fit">
-            <h2 className="font-headline text-4xl md:text-5xl font-bold tracking-tight mb-2">Where Dev AI Labs <br />Gets Deployed</h2>
+            <h2 className="font-headline text-2xl md:text-3xl font-bold tracking-tight mb-1">Where Dev AI Labs <br />Gets Deployed</h2>
             <div className="relative h-4 w-full overflow-hidden mb-4">
               <svg viewBox="0 0 200 20" className="w-full h-full text-tertiary fill-none stroke-current stroke-2">
                 <motion.path
-                  animate={{ 
+                  animate={{
                     d: [
                       "M 0 10 Q 25 5, 50 10 T 100 10 T 150 10 T 200 10",
                       "M 0 10 Q 25 15, 50 10 T 100 10 T 150 10 T 200 10",
@@ -76,16 +76,16 @@ const UseCases = () => {
               </svg>
             </div>
           </div>
-          <p className="text-on-surface-variant max-w-md">Click any scenario to explore the deep technical background of our deployments.</p>
+          <p className="text-on-surface-variant max-w-xs md:max-w-sm text-xs">Click any scenario to explore the deep technical background of our deployments.</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
           {cases.map((item) => (
             <motion.div
               key={item.id}
-              whileHover={{ y: -10 }}
+              whileHover={{ y: -3 }}
               onClick={() => setActiveCase(activeCase === item.id ? null : item.id)}
-              className="group relative aspect-[4/5] rounded-2xl overflow-hidden bg-surface cursor-pointer border border-outline-variant/10"
+              className="group relative aspect-video md:aspect-[16/9] rounded-2xl overflow-hidden bg-surface cursor-pointer border border-outline-variant/10"
             >
               {/* Background Image */}
               {item.img && (
@@ -115,9 +115,9 @@ const UseCases = () => {
                 </div>
               )}
 
-              <div className="absolute bottom-0 left-0 p-8 z-20 w-full">
-                <h4 className="font-headline text-2xl font-bold mb-2">{item.title}</h4>
-                <p className="text-on-surface-variant text-sm">{item.desc}</p>
+              <div className="absolute bottom-0 left-0 p-3 md:p-4 z-20 w-full">
+                <h4 className="font-headline text-lg md:text-xl font-bold mb-1">{item.title}</h4>
+                <p className="text-on-surface-variant text-[10px] md:text-xs leading-relaxed">{item.desc}</p>
 
                 <motion.div
                   initial={false}

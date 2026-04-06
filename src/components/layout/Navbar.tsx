@@ -3,83 +3,80 @@ import { Lightbulb, Menu, X } from 'lucide-react';
 
 const Navbar = ({ onOpenModal }: { onOpenModal: (type: string) => void }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [activeTab, setActiveTab] = useState('platform');
+  const [isLoading, setIsLoading] = useState(false);
 
-  const navLinks = [
-    { name: 'Platform', href: '#top', id: 'platform' },
-    { name: 'Products', href: '#products', id: 'products' },
-    { name: 'Use Cases', href: '#use-cases', id: 'use-cases' },
-    { name: 'Team', href: '#team', id: 'team' },
-    { name: 'Contact', href: '#contact', id: 'contact' },
-  ];
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
+    e.preventDefault();
+    setIsOpen(false);
+    setIsLoading(true);
+
+    setTimeout(() => {
+      setIsLoading(false);
+      const element = document.getElementById(targetId.replace('#', ''));
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      } else if (targetId === '#top') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }, 400);
+  };
 
   return (
-    <header className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-xl border-b border-outline-variant/10">
-      <nav className="flex justify-between items-center px-6 md:px-12 py-4 max-w-screen-2xl mx-auto">
-        <div className="flex items-center gap-2 cursor-pointer" onClick={() => { setActiveTab('platform'); window.scrollTo(0, 0); }}>
-          <Lightbulb className="w-6 h-6 text-primary fill-primary drop-shadow-[0_0_8px_rgba(255,193,7,0.5)]" />
-          <div className="text-xl font-black text-on-surface tracking-tighter font-headline">Dev AI Labs</div>
-        </div>
+    <>
+      <header className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-xl border-b border-outline-variant/10">
+        <nav className="flex justify-between items-center px-6 md:px-12 py-4 max-w-screen-2xl mx-auto">
+          <div className="flex items-center gap-2">
+            <Lightbulb className="w-6 h-6 text-primary fill-primary" />
+            <div className="text-xl font-black text-on-surface tracking-tighter font-headline">Dev AI Labs</div>
+          </div>
 
-        <div className="hidden md:flex items-center gap-8 font-headline font-bold tracking-tight">
-          {navLinks.map((link) => (
-            <a
-              key={link.id}
-              href={link.href}
-              onClick={() => setActiveTab(link.id)}
-              className={`relative py-1 transition-all duration-300 ${
-                activeTab === link.id 
-                  ? 'text-primary drop-shadow-[0_0_8px_rgba(255,193,7,0.4)]' 
-                  : 'text-on-surface/70 hover:text-on-surface'
-              }`}
+          <div className="hidden md:flex items-center gap-8 font-headline font-bold tracking-tight">
+            <a className="text-on-surface/70 hover:text-primary focus:underline focus:underline-offset-4 transition-colors cursor-pointer" onClick={(e) => handleNavClick(e, '#top')}>Platform</a>
+            <a className="text-on-surface/70 hover:text-primary focus:underline focus:underline-offset-4 transition-colors cursor-pointer" onClick={(e) => handleNavClick(e, '#products')}>Products</a>
+            <a className="text-on-surface/70 hover:text-primary focus:underline focus:underline-offset-4 transition-colors cursor-pointer" onClick={(e) => handleNavClick(e, '#use-cases')}>Use Cases</a>
+            <a className="text-on-surface/70 hover:text-primary focus:underline focus:underline-offset-4 transition-colors cursor-pointer" onClick={(e) => handleNavClick(e, '#team')}>Team</a>
+            <a className="text-on-surface/70 hover:text-primary focus:underline focus:underline-offset-4 transition-colors cursor-pointer" onClick={(e) => handleNavClick(e, '#contact')}>Contact</a>
+          </div>
+
+          <div className="flex items-center gap-4">
+            <button
+              onClick={() => onOpenModal('demo')}
+              className="hidden md:block primary-gradient text-on-primary px-6 py-2 rounded-md font-bold text-sm tracking-tight active:scale-95 transition-all"
             >
-              {link.name}
-              {activeTab === link.id && (
-                <span className="absolute -bottom-1 left-0 w-full h-[2px] bg-primary rounded-full shadow-[0_0_8px_#ffc107]"></span>
-              )}
-            </a>
-          ))}
-        </div>
+              Request Demo
+            </button>
+            <button className="md:hidden text-on-surface" onClick={() => setIsOpen(!isOpen)}>
+              {isOpen ? <X /> : <Menu />}
+            </button>
+          </div>
+        </nav>
 
-        <div className="flex items-center gap-4">
-          <button
-            onClick={() => onOpenModal('demo')}
-            className="hidden md:block primary-gradient text-on-primary px-6 py-2 rounded-md font-bold text-sm tracking-tight active:scale-95 transition-all shadow-[0_0_15px_rgba(255,193,7,0.2)] hover:shadow-[0_0_25px_rgba(255,193,7,0.4)]"
-          >
-            Request Demo
-          </button>
-          <button className="md:hidden text-on-surface" onClick={() => setIsOpen(!isOpen)}>
-            {isOpen ? <X /> : <Menu />}
-          </button>
-        </div>
-      </nav>
-
-      {/* Mobile Menu */}
-      {isOpen && (
-        <div className="md:hidden bg-background border-b border-outline-variant/10 px-6 py-8 flex flex-col gap-6 font-headline font-bold">
-          {navLinks.map((link) => (
-            <a
-              key={link.id}
-              href={link.href}
-              onClick={() => { setActiveTab(link.id); setIsOpen(false); }}
-              className={`transition-all duration-300 ${
-                activeTab === link.id 
-                  ? 'text-primary drop-shadow-[0_0_8px_rgba(255,193,7,0.4)] block border-l-2 border-primary pl-3' 
-                  : 'text-on-surface/70 pl-3'
-              }`}
+        {/* Mobile Menu */}
+        {isOpen && (
+          <div className="md:hidden bg-background border-b border-outline-variant/10 px-6 py-8 flex flex-col gap-6 font-headline font-bold">
+            <a className="text-on-surface/70 hover:text-primary focus:underline focus:underline-offset-4 transition-colors cursor-pointer" onClick={(e) => handleNavClick(e, '#top')}>Platform</a>
+            <a className="text-on-surface/70 hover:text-primary focus:underline focus:underline-offset-4 transition-colors cursor-pointer" onClick={(e) => handleNavClick(e, '#products')}>Products</a>
+            <a className="text-on-surface/70 hover:text-primary focus:underline focus:underline-offset-4 transition-colors cursor-pointer" onClick={(e) => handleNavClick(e, '#use-cases')}>Use Cases</a>
+            <a className="text-on-surface/70 hover:text-primary focus:underline focus:underline-offset-4 transition-colors cursor-pointer" onClick={(e) => handleNavClick(e, '#team')}>Team</a>
+            <a className="text-on-surface/70 hover:text-primary focus:underline focus:underline-offset-4 transition-colors cursor-pointer" onClick={(e) => handleNavClick(e, '#contact')}>Contact</a>
+            <button
+              onClick={() => { onOpenModal('demo'); setIsOpen(false); }}
+              className="primary-gradient text-on-primary px-6 py-3 rounded-md font-bold text-sm"
             >
-              {link.name}
-            </a>
-          ))}
-          <button
-            onClick={() => { onOpenModal('demo'); setIsOpen(false); }}
-            className="primary-gradient text-on-primary px-6 py-3 rounded-md font-bold text-sm mt-4 shadow-[0_0_15px_rgba(255,193,7,0.2)]"
-          >
-            Request Demo
-          </button>
+              Request Demo
+            </button>
+          </div>
+        )}
+      </header>
+
+      {/* Full Screen Loading Overlay */}
+      {isLoading && (
+        <div className="fixed inset-0 z-[1000] bg-background/95 backdrop-blur-xl flex flex-col items-center justify-center transition-all duration-300">
+          <Lightbulb className="w-16 h-16 text-primary fill-primary animate-pulse drop-shadow-[0_0_15px_rgba(255,193,7,0.5)]" />
+          <div className="mt-8 text-xl font-bold font-headline text-primary tracking-widest animate-pulse">LOADING</div>
         </div>
       )}
-    </header>
+    </>
   );
 };
 
