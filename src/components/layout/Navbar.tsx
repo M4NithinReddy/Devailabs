@@ -9,7 +9,7 @@ const Navbar = ({ onOpenModal }: { onOpenModal: (type: string) => void }) => {
     e.preventDefault();
     setIsOpen(false);
     setIsLoading(true);
-    
+
     setTimeout(() => {
       setIsLoading(false);
       const element = document.getElementById(targetId.replace('#', ''));

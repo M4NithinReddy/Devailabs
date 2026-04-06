@@ -4,8 +4,23 @@ import { motion } from 'motion/react';
 
 const Hero = ({ onOpenModal }: { onOpenModal: (type: string) => void }) => (
   <section className="relative pt-40 pb-24 px-6 flex flex-col items-center justify-center text-center min-h-[80vh] overflow-hidden">
-    <div className="absolute inset-0 z-0">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[120px]"></div>
+    {/* AI Layered Architecture / Data Foundation graphic video */}
+    <video
+      autoPlay
+      loop
+      muted
+      playsInline
+      className="absolute inset-0 w-full h-full object-cover z-0 opacity-30 select-none pointer-events-none"
+      style={{
+        filter: "sepia(100%) hue-rotate(5deg) saturate(300%) contrast(150%)",
+        mixBlendMode: "screen"
+      }}
+    >
+      {/* Abstract flying through high-tech AI layers/data streams */}
+      <source src="https://videos.pexels.com/video-files/3163534/3163534-uhd_3840_2160_30fps.mp4" type="video/mp4" />
+    </video>
+    <div className="absolute inset-0 z-0 bg-background/70">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-primary/10 rounded-full blur-[150px]"></div>
     </div>
 
     <motion.div
@@ -14,7 +29,22 @@ const Hero = ({ onOpenModal }: { onOpenModal: (type: string) => void }) => (
       transition={{ duration: 0.8 }}
       className="relative z-10 max-w-5xl mx-auto"
     >
-      <span className="font-label text-primary tracking-[0.3em] uppercase text-xs mb-6 block">The Stratified Intelligence Architecture</span>
+      <div className="flex items-center justify-center gap-2 mb-6">
+        <motion.span 
+          animate={{ opacity: [1, 0.7, 1, 1, 0.4, 1, 1, 0.8, 1] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+          className="font-label text-primary tracking-[0.4em] uppercase text-[10px] md:text-xs font-bold drop-shadow-[0_0_8px_rgba(255,193,7,0.5)]"
+        >
+          The Stratified Intelligence Architecture
+        </motion.span>
+        {/* Blinking Terminal Cursor */}
+        <motion.span 
+          animate={{ opacity: [0, 1, 0] }}
+          transition={{ duration: 0.9, repeat: Infinity, ease: "linear" }}
+          className="w-1.5 h-3 md:h-3.5 bg-primary rounded-sm shadow-[0_0_10px_#ffc107]"
+        />
+      </div>
+
       <h1 className="font-headline text-5xl md:text-8xl font-extrabold text-on-surface tracking-tighter mb-8 leading-[1.1]">
         The Intelligence Behind <br /><span className="text-gradient">the Platform</span>
       </h1>
