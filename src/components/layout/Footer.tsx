@@ -48,9 +48,9 @@ const Footer = () => (
               { name: 'DroneTV', link: 'https://www.dronetv.in/' },
               { name: 'VirelBiz', link: 'https://vixelbiz.com/' }
             ].map((item) => (
-              <a 
-                key={item.name} 
-                className="font-body text-sm text-on-surface-variant hover:text-primary transition-colors duration-300" 
+              <a
+                key={item.name}
+                className="font-body text-sm text-on-surface-variant hover:text-primary transition-colors duration-300"
                 href={item.link}
                 target="_blank"
                 rel="noopener noreferrer"
