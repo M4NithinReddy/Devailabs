@@ -50,11 +50,11 @@ const Team = () => {
   ];
 
   return (
-    <section id="team" className="py-32 px-6">
+    <section id="team" className="py-12 px-6">
       <div className="max-w-screen-2xl mx-auto">
-        <div className="w-fit mx-auto text-center mb-20 group">
-          <h2 className="font-headline text-4xl font-bold mb-2">The People Building This</h2>
-          <div className="flex justify-center mb-6">
+        <div className="w-fit mx-auto text-center mb-8 group">
+          <h2 className="font-headline text-3xl font-bold mb-2">The People Building This</h2>
+          <div className="flex justify-center mb-4">
             <div className="relative h-4 w-full overflow-hidden">
               <svg viewBox="0 0 200 20" className="w-full h-full text-primary fill-none stroke-current stroke-2">
                 <motion.path
@@ -117,10 +117,7 @@ const Team = () => {
                 {/* Pulsing Aurora Glow Backdrop */}
                 <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-56 h-28 aurora-glow animate-pulse-glow transition-opacity duration-1000 ${(hoveredIndex === i || activeBioIndex === i) ? 'opacity-100' : 'opacity-30'}`} />
 
-                {/* Editorial Background Number */}
-                <span className="absolute top-0 left-1/2 -translate-x-1/2 text-8xl font-black text-white/[0.02] select-none pointer-events-none group-hover:text-primary/[0.1] transition-all duration-1000 group-hover:-translate-y-2">
-                  0{i + 1}
-                </span>
+
 
                 <div className="relative z-10 w-full px-2 mt-8">
                   <div
@@ -140,7 +137,7 @@ const Team = () => {
                   </div>
                 </div>
               </div>
-              <p className="text-white/20 text-[10px] font-label mt-5 uppercase tracking-[0.4em] font-black group-hover:text-primary transition-colors duration-500 relative z-10">{member.role}</p>
+              <p className="text-white/20 text-[10px] font-label mt-2 uppercase tracking-[0.4em] font-black group-hover:text-primary transition-colors duration-500 relative z-10">{member.role}</p>
             </div>
           ))}
         </div>
