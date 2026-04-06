@@ -4,6 +4,7 @@ import { X } from 'lucide-react';
 
 const Industries = () => {
   const [activeIndustry, setActiveIndustry] = useState<number | null>(null);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   const industryData = [
     {
@@ -43,13 +44,58 @@ const Industries = () => {
       <div className="max-w-screen-2xl mx-auto">
         <div className="flex flex-wrap justify-center gap-x-12 gap-y-8 opacity-60 hover:opacity-100 transition-all duration-700">
           {industryData.map((ind, i) => (
-            <span
+            <motion.div
               key={i}
+              onMouseEnter={() => setHoveredIndex(i)}
+              onMouseLeave={() => setHoveredIndex(null)}
               onClick={() => setActiveIndustry(activeIndustry === i ? null : i)}
-              className={`font-label text-sm tracking-widest uppercase transition-all cursor-pointer hover:text-primary ${activeIndustry === i ? 'text-primary scale-110' : ''}`}
+              className="relative group cursor-pointer py-3 px-6"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
-              {ind.label}
-            </span>
+              {/* Premium Background Attraction Layer (Permanently Visible) */}
+              <div className="absolute inset-0 z-0 px-2 py-1">
+                <motion.div
+                  initial={false}
+                  animate={{ 
+                    opacity: (activeIndustry === i || hoveredIndex === i) ? 1 : 0.4,
+                    scale: (activeIndustry === i || hoveredIndex === i) ? 1 : 0.95
+                  }}
+                  className="absolute inset-0"
+                >
+                  {/* Pulsing Glow Layer */}
+                  <div className={`absolute inset-0 rounded-2xl blur-lg transition-all duration-700 ${activeIndustry === i ? 'bg-primary/30 blur-xl' : 'bg-primary/5'}`} />
+                  
+                  {/* Animated Aurora Gradient */}
+                  <div className={`absolute inset-0 bg-gradient-to-br from-primary/10 via-tertiary/5 to-transparent rounded-2xl transition-all duration-700 ${activeIndustry === i ? 'opacity-80' : 'opacity-40'}`} />
+                  
+                  {/* Digital Shards (Always Running) */}
+                  <div className={`absolute inset-0 border rounded-2xl overflow-hidden transition-all duration-700 ${activeIndustry === i ? 'border-primary/40' : 'border-white/5'}`}>
+                     <motion.div 
+                      animate={{ x: ["-100%", "100%"] }}
+                      transition={{ repeat: Infinity, duration: 4, ease: "linear" }}
+                      className="absolute inset-0 w-1/3 h-full bg-gradient-to-r from-transparent via-primary/10 to-transparent skew-x-12"
+                     />
+                  </div>
+                </motion.div>
+              </div>
+              
+              <span
+                className={`relative z-10 font-label text-[11px] md:text-sm tracking-[0.25em] font-black uppercase transition-all duration-700 ${activeIndustry === i ? 'text-primary' : 'text-on-surface-variant/70 group-hover:text-primary'}`}
+              >
+                {ind.label}
+              </span>
+
+              {/* Sophisticated Underline */}
+              <motion.div 
+                className={`absolute bottom-0 left-6 right-6 h-[2px] rounded-full transition-all duration-700 z-10 ${activeIndustry === i ? 'bg-primary shadow-[0_0_15px_rgba(255,193,7,1)]' : 'bg-white/10 group-hover:bg-primary/40'}`}
+                initial={false}
+                animate={{
+                  width: activeIndustry === i ? "calc(100% - 48px)" : "20%",
+                  opacity: activeIndustry === i ? 1 : 0.2
+                }}
+              />
+            </motion.div>
           ))}
         </div>
 

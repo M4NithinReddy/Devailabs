@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { motion } from 'motion/react';
 import InteractiveDotWave from '../ui/InteractiveDotWave';
@@ -18,7 +19,22 @@ const Hero = ({ onOpenModal }: { onOpenModal: (type: string) => void }) => (
       transition={{ duration: 0.8 }}
       className="relative z-10 max-w-5xl mx-auto"
     >
-      <span className="font-label text-primary tracking-[0.3em] uppercase text-xs mb-6 block">The Stratified Intelligence Architecture</span>
+      <div className="flex items-center justify-center gap-2 mb-6">
+        <motion.span 
+          animate={{ opacity: [1, 0.7, 1, 1, 0.4, 1, 1, 0.8, 1] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+          className="font-label text-primary tracking-[0.4em] uppercase text-[10px] md:text-xs font-bold drop-shadow-[0_0_8px_rgba(255,193,7,0.5)]"
+        >
+          The Stratified Intelligence Architecture
+        </motion.span>
+        {/* Blinking Terminal Cursor */}
+        <motion.span 
+          animate={{ opacity: [0, 1, 0] }}
+          transition={{ duration: 0.9, repeat: Infinity, ease: "linear" }}
+          className="w-1.5 h-3 md:h-3.5 bg-primary rounded-sm shadow-[0_0_10px_#ffc107]"
+        />
+      </div>
+
       <h1 className="font-headline text-5xl md:text-8xl font-extrabold text-on-surface tracking-tighter mb-8 leading-[1.1]">
         The Intelligence Behind <br /><span className="text-gradient">the Platform</span>
       </h1>

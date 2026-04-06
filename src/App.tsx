@@ -7,6 +7,7 @@ import Footer from './components/layout/Footer';
 
 // UI
 import Modal from './components/ui/Modal';
+import Preloader from './components/ui/Preloader';
 
 // Sections
 import Hero from './components/sections/Hero';
@@ -21,9 +22,23 @@ import CTA from './components/sections/CTA';
 
 export default function App() {
   const [activeModal, setActiveModal] = React.useState<string | null>(null);
+  const [isLoading, setIsLoading] = React.useState(true);
+
+  React.useEffect(() => {
+    // Artificial delay to allow preloader to animate nicely
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2800);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <div id="top" className="min-h-screen selection:bg-primary selection:text-on-primary">
+      <AnimatePresence mode="wait">
+        {isLoading && <Preloader key="preloader" />}
+      </AnimatePresence>
+
       <Navbar onOpenModal={setActiveModal} />
       <main>
         <Hero onOpenModal={setActiveModal} />
@@ -49,3 +64,4 @@ export default function App() {
     </div>
   );
 }
+
