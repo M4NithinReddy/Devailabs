@@ -10,7 +10,7 @@ const Industries = () => {
     {
       label: "Drone Services",
       matter: "High-precision aerial data collection and autonomous mission planning for industrial surveying, infrastructure surveillance, and technical visual intelligence.",
-      image: "https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&q=80&w=2070"
+      image: "/indian_drone_services.png"
     },
     {
       label: "Pilot Training",
@@ -18,83 +18,109 @@ const Industries = () => {
       image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=2070"
     },
     {
-      label: "Geospatial",
+      label: "Geospatial Survey",
       matter: "Advanced 3D mapping and GIS data integration, transforming raw topographical sensor data into actionable spatial intelligence and millimeter-precise terrain models.",
       image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=2070"
     },
     {
-      label: "Agri-tech",
+      label: "Agriculture Technology",
       matter: "Sustainable precision farming solutions leveraging multispectral imaging to monitor crop pathology, optimize irrigation cycles, and automate nutrient distribution.",
       image: "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?auto=format&fit=crop&q=80&w=2070"
     },
     {
-      label: "Defence",
+      label: "Defence and Security",
       matter: "Mission-critical AI-driven tactical intelligence and unmanned combat support systems for high-stakes strategic reconnaissance and integrated battlefield awareness.",
       image: "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&q=80&w=2072"
     },
     {
-      label: "Logistics",
-      matter: "Next-generation autonomous supply chain solutions, featuring last-mile drone delivery swarms and intelligent warehouse inventory management systems.",
-      image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=2070"
+      label: "Higher Education",
+      matter: "Advanced academic programs and practical research initiatives integrating UAV technologies into progressive engineering and spatial science curricula.",
+      image: "/higher_education.png"
     },
+    {
+      label: "Media and Content",
+      matter: "Cinematic aerial cinematography and high-resolution dynamic framing for professional broadcast, filmmaking, and immersive media production.",
+      image: "/media_and_content.png"
+    },
+    {
+      label: "B2B Marketplaces",
+      matter: "Streamlined procurement and vendor networking platforms connecting enterprise clients with certified drone hardware, software, and service providers.",
+      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=2070&q=80&auto=format&fit=crop"
+    },
+    {
+      label: "Infrastructure Development",
+      matter: "Comprehensive civil engineering support featuring volumetric analysis, structural integrity inspections, and continuous site progression tracking.",
+      image: "/infrastructure_development.png"
+    },
+    {
+      label: "3D Visualisation",
+      matter: "Photorealistic digital twin creation and immersive architectural rendering using hyper-accurate point cloud data and mesh reconstructions.",
+      image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=2070&q=80&auto=format&fit=crop"
+    },
+    {
+      label: "Simulation Technology",
+      matter: "Next-generation synthetic and augmented environments designed for risk-free system testing, pilot evaluation, and autonomous AI algorithm training.",
+      image: "https://images.unsplash.com/photo-1593508512255-86ab42a8e620?w=2070&q=80&auto=format&fit=crop"
+    },
+    {
+      label: "Smart Cities",
+      matter: "Integrated urban management networks utilizing autonomous data nodes for traffic optimization, infrastructure health monitoring, and municipal planning.",
+      image: "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=2070&q=80&auto=format&fit=crop"
+    },
+    {
+      label: "LiDAR and Remote Sensing",
+      matter: "High-density laser scanning and multi-spectral sensor deployment for precise topographical mapping, canopy penetration, and geospatial analytics.",
+      image: "/lidar_4k.png"
+    },
+    {
+      label: "Environmental Monitoring",
+      matter: "Ecological tracking and conservation management through persistent aerial surveillance of wildlife populations, deforestation, and climate impact variables.",
+      image: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=2070&q=80&auto=format&fit=crop"
+    }
   ];
 
   return (
-    <section className="py-20 px-6 bg-background">
+    <section className="min-h-screen py-10 px-6 bg-background flex flex-col justify-center">
       <div className="max-w-screen-2xl mx-auto">
-        <div className="flex flex-wrap justify-center gap-x-12 gap-y-8 opacity-60 hover:opacity-100 transition-all duration-700">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-8"
+        >
+          <h2 className="font-headline text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+            <span className="text-white">Built for</span><br />
+            <span style={{ color: '#fcc313' }}>
+              These Sectors
+            </span>
+          </h2>
+        </motion.div>
+        <div className="flex flex-wrap justify-center gap-x-3 gap-y-3 transition-all duration-700 max-w-6xl mx-auto relative z-10">
           {industryData.map((ind, i) => (
             <motion.div
               key={i}
               onMouseEnter={() => setHoveredIndex(i)}
               onMouseLeave={() => setHoveredIndex(null)}
               onClick={() => setActiveIndustry(activeIndustry === i ? null : i)}
-              className="relative group cursor-pointer py-3 px-6"
-              whileHover={{ scale: 1.05 }}
+              className={`relative group cursor-pointer py-2.5 px-5 rounded-full transition-all duration-500 overflow-hidden border backdrop-blur-md flex items-center justify-center ${
+                activeIndustry === i 
+                ? 'bg-primary/20 border-primary/60 shadow-[0_0_30px_rgba(252,195,19,0.4)] scale-105' 
+                : 'bg-white/10 border-white/20 hover:bg-white/20 hover:border-primary/50 shadow-[0_4px_15px_rgba(0,0,0,0.4)] hover:shadow-[0_0_20px_rgba(252,195,19,0.3)]'
+              }`}
+              whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
             >
-              {/* Premium Background Attraction Layer (Permanently Visible) */}
-              <div className="absolute inset-0 z-0 px-2 py-1">
-                <motion.div
-                  initial={false}
-                  animate={{ 
-                    opacity: (activeIndustry === i || hoveredIndex === i) ? 1 : 0.4,
-                    scale: (activeIndustry === i || hoveredIndex === i) ? 1 : 0.95
-                  }}
-                  className="absolute inset-0"
-                >
-                  {/* Pulsing Glow Layer */}
-                  <div className={`absolute inset-0 rounded-2xl blur-lg transition-all duration-700 ${activeIndustry === i ? 'bg-primary/30 blur-xl' : 'bg-primary/5'}`} />
-                  
-                  {/* Animated Aurora Gradient */}
-                  <div className={`absolute inset-0 bg-gradient-to-br from-primary/10 via-tertiary/5 to-transparent rounded-2xl transition-all duration-700 ${activeIndustry === i ? 'opacity-80' : 'opacity-40'}`} />
-                  
-                  {/* Digital Shards (Always Running) */}
-                  <div className={`absolute inset-0 border rounded-2xl overflow-hidden transition-all duration-700 ${activeIndustry === i ? 'border-primary/40' : 'border-white/5'}`}>
-                     <motion.div 
-                      animate={{ x: ["-100%", "100%"] }}
-                      transition={{ repeat: Infinity, duration: 4, ease: "linear" }}
-                      className="absolute inset-0 w-1/3 h-full bg-gradient-to-r from-transparent via-primary/10 to-transparent skew-x-12"
-                     />
-                  </div>
-                </motion.div>
-              </div>
-              
               <span
-                className={`relative z-10 font-label text-[11px] md:text-sm tracking-[0.25em] font-black uppercase transition-all duration-700 ${activeIndustry === i ? 'text-primary' : 'text-on-surface-variant/70 group-hover:text-primary'}`}
+                className={`relative z-10 font-label text-[10px] md:text-[11px] tracking-widest font-black uppercase transition-all duration-500 ${
+                  activeIndustry === i ? 'text-primary drop-shadow-[0_0_10px_rgba(252,195,19,0.8)]' : 'text-white/90 group-hover:text-white group-hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.6)]'
+                }`}
               >
                 {ind.label}
               </span>
 
-              {/* Sophisticated Underline */}
-              <motion.div 
-                className={`absolute bottom-0 left-6 right-6 h-[2px] rounded-full transition-all duration-700 z-10 ${activeIndustry === i ? 'bg-primary shadow-[0_0_15px_rgba(255,193,7,1)]' : 'bg-white/10 group-hover:bg-primary/40'}`}
-                initial={false}
-                animate={{
-                  width: activeIndustry === i ? "calc(100% - 48px)" : "20%",
-                  opacity: activeIndustry === i ? 1 : 0.2
-                }}
-              />
+              {/* Hover Glow Sweep */}
+              <div className={`absolute inset-0 w-[200%] bg-gradient-to-r from-transparent via-primary/20 to-transparent -translate-x-full group-hover:translate-x-[50%] transition-transform duration-700 ease-in-out pointer-events-none ${activeIndustry === i ? 'hidden' : 'block'}`}></div>
             </motion.div>
           ))}
         </div>
@@ -107,25 +133,39 @@ const Industries = () => {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: -20 }}
               transition={{ duration: 0.5, ease: "easeOut" }}
-              className="mt-12 max-w-4xl mx-auto rounded-3xl overflow-hidden glass-card border border-primary/20 shadow-2xl relative"
+              className="mt-6 max-w-4xl mx-auto rounded-2xl overflow-hidden glass-card border border-primary/20 shadow-[0_0_40px_rgba(252,195,19,0.1)] relative"
             >
-              <div className="aspect-video relative overflow-hidden group">
-                <img
-                  src={industryData[activeIndustry].image}
-                  alt={industryData[activeIndustry].label}
-                  className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent"></div>
+              <div className="relative overflow-hidden group flex flex-col md:flex-row h-auto md:h-[300px]">
+                <div className="w-full md:w-5/12 h-[200px] md:h-full relative overflow-hidden">
+                  <img
+                    src={industryData[activeIndustry].image}
+                    alt={industryData[activeIndustry].label}
+                    className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                  />
+                  <div className="hidden md:block absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-background to-transparent z-10" />
+                </div>
 
-                <div className="absolute bottom-0 left-0 p-10 z-10 w-full max-w-2xl">
+                <div className="w-full md:w-7/12 flex items-center p-6 md:p-12 z-10 bg-background relative">
+                  <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-[80px] pointer-events-none" />
+                  
                   <motion.div
-                    initial={{ opacity: 0, x: -20 }}
+                    initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.2 }}
+                    transition={{ delay: 0.1, duration: 0.4 }}
+                    className="relative z-10"
                   >
-                    <span className="font-label text-primary text-xs tracking-widest uppercase mb-4 block">Strategic Focus</span>
-                    <h3 className="font-headline text-3xl font-bold mb-4">{industryData[activeIndustry].label}</h3>
-                    <p className="text-on-surface-variant text-lg leading-relaxed">{industryData[activeIndustry].matter}</p>
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="w-8 h-px bg-primary/60"></div>
+                      <span className="font-label text-primary text-[10px] tracking-widest uppercase">Strategic Focus</span>
+                    </div>
+                    <h3 className="font-headline text-2xl md:text-3xl font-bold mb-4 text-white">{industryData[activeIndustry].label}</h3>
+                    <p className="text-on-surface-variant text-sm md:text-[15px] leading-relaxed">{industryData[activeIndustry].matter}</p>
+                    
+                    <div className="mt-8 flex gap-1.5 opacity-60">
+                       <span className="w-1.5 h-1.5 rounded-full bg-primary/30" />
+                       <span className="w-1.5 h-1.5 rounded-full bg-primary/60" />
+                       <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+                    </div>
                   </motion.div>
                 </div>
               </div>
