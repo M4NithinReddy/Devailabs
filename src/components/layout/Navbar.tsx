@@ -31,11 +31,26 @@ const Navbar = ({ onOpenModal }: { onOpenModal: (type: string) => void }) => {
           </div>
 
           <div className="hidden md:flex items-center gap-8 font-headline font-bold tracking-tight">
-            <a className="text-on-surface/70 hover:text-primary focus:underline focus:underline-offset-4 transition-colors cursor-pointer" onClick={(e) => handleNavClick(e, '#top')}>Platform</a>
-            <a className="text-on-surface/70 hover:text-primary focus:underline focus:underline-offset-4 transition-colors cursor-pointer" onClick={(e) => handleNavClick(e, '#products')}>Products</a>
-            <a className="text-on-surface/70 hover:text-primary focus:underline focus:underline-offset-4 transition-colors cursor-pointer" onClick={(e) => handleNavClick(e, '#use-cases')}>Use Cases</a>
-            <a className="text-on-surface/70 hover:text-primary focus:underline focus:underline-offset-4 transition-colors cursor-pointer" onClick={(e) => handleNavClick(e, '#team')}>Team</a>
-            <a className="text-on-surface/70 hover:text-primary focus:underline focus:underline-offset-4 transition-colors cursor-pointer" onClick={(e) => handleNavClick(e, '#contact')}>Contact</a>
+            <a className="relative group text-on-surface/70 hover:text-primary transition-colors cursor-pointer py-1" onClick={(e) => handleNavClick(e, '#top')}>
+              Platform
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+            </a>
+            <a className="relative group text-on-surface/70 hover:text-primary transition-colors cursor-pointer py-1" onClick={(e) => handleNavClick(e, '#products')}>
+              Products
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+            </a>
+            <a className="relative group text-on-surface/70 hover:text-primary transition-colors cursor-pointer py-1" onClick={(e) => handleNavClick(e, '#use-cases')}>
+              Use Cases
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+            </a>
+            <a className="relative group text-on-surface/70 hover:text-primary transition-colors cursor-pointer py-1" onClick={(e) => handleNavClick(e, '#team')}>
+              Team
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+            </a>
+            <a className="relative group text-on-surface/70 hover:text-primary transition-colors cursor-pointer py-1" onClick={(e) => handleNavClick(e, '#contact')}>
+              Contact
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+            </a>
           </div>
 
           <div className="flex items-center gap-4">
@@ -54,11 +69,26 @@ const Navbar = ({ onOpenModal }: { onOpenModal: (type: string) => void }) => {
         {/* Mobile Menu */}
         {isOpen && (
           <div className="md:hidden bg-background border-b border-outline-variant/10 px-6 py-8 flex flex-col gap-6 font-headline font-bold">
-            <a className="text-on-surface/70 hover:text-primary focus:underline focus:underline-offset-4 transition-colors cursor-pointer" onClick={(e) => handleNavClick(e, '#top')}>Platform</a>
-            <a className="text-on-surface/70 hover:text-primary focus:underline focus:underline-offset-4 transition-colors cursor-pointer" onClick={(e) => handleNavClick(e, '#products')}>Products</a>
-            <a className="text-on-surface/70 hover:text-primary focus:underline focus:underline-offset-4 transition-colors cursor-pointer" onClick={(e) => handleNavClick(e, '#use-cases')}>Use Cases</a>
-            <a className="text-on-surface/70 hover:text-primary focus:underline focus:underline-offset-4 transition-colors cursor-pointer" onClick={(e) => handleNavClick(e, '#team')}>Team</a>
-            <a className="text-on-surface/70 hover:text-primary focus:underline focus:underline-offset-4 transition-colors cursor-pointer" onClick={(e) => handleNavClick(e, '#contact')}>Contact</a>
+            <a className="relative group w-fit text-on-surface/70 hover:text-primary transition-colors cursor-pointer pb-1" onClick={(e) => handleNavClick(e, '#top')}>
+              Platform
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+            </a>
+            <a className="relative group w-fit text-on-surface/70 hover:text-primary transition-colors cursor-pointer pb-1" onClick={(e) => handleNavClick(e, '#products')}>
+              Products
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+            </a>
+            <a className="relative group w-fit text-on-surface/70 hover:text-primary transition-colors cursor-pointer pb-1" onClick={(e) => handleNavClick(e, '#use-cases')}>
+              Use Cases
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+            </a>
+            <a className="relative group w-fit text-on-surface/70 hover:text-primary transition-colors cursor-pointer pb-1" onClick={(e) => handleNavClick(e, '#team')}>
+              Team
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+            </a>
+            <a className="relative group w-fit text-on-surface/70 hover:text-primary transition-colors cursor-pointer pb-1" onClick={(e) => handleNavClick(e, '#contact')}>
+              Contact
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+            </a>
             <button
               onClick={() => { onOpenModal('demo'); setIsOpen(false); }}
               className="primary-gradient text-on-primary px-6 py-3 rounded-md font-bold text-sm"
