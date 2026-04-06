@@ -1,5 +1,5 @@
 import React from 'react';
-import { Lightbulb } from 'lucide-react';
+
 
 const Footer = () => (
   <footer className="bg-background w-full border-t border-outline-variant/10">
@@ -8,8 +8,7 @@ const Footer = () => (
         {/* Company Info */}
         <div className="flex flex-col gap-6">
           <div className="flex flex-col gap-4">
-            <Lightbulb className="w-10 h-10 text-primary fill-primary" />
-            <h3 className="text-2xl font-black text-on-surface tracking-tighter font-headline uppercase leading-none">Dev AI Labs</h3>
+            <img src="/images/devailabslogo.png" alt="Dev AI Labs Logo" className="h-24 object-contain" />
           </div>
           <div className="flex flex-col gap-4">
             <span className="font-label text-[10px] uppercase tracking-widest text-on-surface-variant/60">The Intelligence Behind The Platform</span>

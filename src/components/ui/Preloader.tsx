@@ -69,17 +69,7 @@ const Preloader: React.FC = () => {
                 }}
                 transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
               >
-                <svg viewBox="0 0 100 100" className="w-16 h-16 md:w-20 md:h-20">
-                  <defs>
-                    <linearGradient id="glowPulseCore" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stopColor="#ffc107" />
-                      <stop offset="100%" stopColor="#ff9800" />
-                    </linearGradient>
-                  </defs>
-                  <path d="M50 10 C30 10 15 25 15 45 C15 60 25 70 35 75 L35 85 Q35 90 40 90 L60 90 Q65 90 65 85 L65 75 C75 70 85 60 85 45 C85 25 70 10 50 10 Z" fill="url(#glowPulseCore)"/>
-                  <path d="M45 40 Q55 40 55 50 Q55 60 45 60 Q35 60 35 70" stroke="#0c0e12" strokeWidth="4" fill="none" strokeLinecap="round" />
-                  <circle cx="50" cy="45" r="10" fill="white" fillOpacity="0.5" />
-                </svg>
+                <img src="/images/devailabsicon.png" alt="Dev AI Labs Icon" className="w-16 h-16 md:w-20 md:h-20 object-contain drop-shadow-[0_0_15px_rgba(255,193,7,0.5)]" />
               </motion.div>
             </motion.div>
 

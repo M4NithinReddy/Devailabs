@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Lightbulb, Menu, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
 const Navbar = ({ onOpenModal }: { onOpenModal: (type: string) => void }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -26,8 +26,7 @@ const Navbar = ({ onOpenModal }: { onOpenModal: (type: string) => void }) => {
       <header className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-xl border-b border-outline-variant/10">
         <nav className="flex justify-between items-center px-6 md:px-12 py-4 max-w-screen-2xl mx-auto">
           <div className="flex items-center gap-2">
-            <Lightbulb className="w-6 h-6 text-primary fill-primary" />
-            <div className="text-xl font-black text-on-surface tracking-tighter font-headline">Dev AI Labs</div>
+            <img src="/images/devailabslogo.png" alt="Dev AI Labs Logo" className="h-16 md:h-20 object-contain" />
           </div>
 
           <div className="hidden md:flex items-center gap-8 font-headline font-bold tracking-tight">
@@ -102,7 +101,7 @@ const Navbar = ({ onOpenModal }: { onOpenModal: (type: string) => void }) => {
       {/* Full Screen Loading Overlay */}
       {isLoading && (
         <div className="fixed inset-0 z-[1000] bg-background/95 backdrop-blur-xl flex flex-col items-center justify-center transition-all duration-300">
-          <Lightbulb className="w-16 h-16 text-primary fill-primary animate-pulse drop-shadow-[0_0_15px_rgba(255,193,7,0.5)]" />
+          <img src="/images/devailabsicon.png" alt="Loading Icon" className="w-16 h-16 object-contain animate-pulse drop-shadow-[0_0_15px_rgba(255,193,7,0.5)]" />
           <div className="mt-8 text-xl font-bold font-headline text-primary tracking-widest animate-pulse">LOADING</div>
         </div>
       )}
