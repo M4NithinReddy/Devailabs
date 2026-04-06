@@ -12,7 +12,7 @@ const UseCases = () => {
       subtitle: "India Drone Academy",
       desc: "Comprehensive AI solutions for flight academies.",
       details: "AI voice and chat handles student enquiries, fee reminders, batch scheduling, and post-training placement follow-ups — freeing the academy operations team for higher-value work.",
-      img: "/public/images/1st img.png",
+      img: "/images/ida.jpg",
       link: "https://indiadroneacademy.com/"
     },
     {
@@ -21,7 +21,7 @@ const UseCases = () => {
       subtitle: "IPage UMS",
       desc: "AI-driven sales and project management for UAV fleets.",
       details: "AI sales pipeline tracks and follows up with survey project leads across agriculture, infrastructure, and defence verticals. Automate proposal reminders and client check-ins.",
-      img: "https://images.unsplash.com/photo-1473968512647-3e447244af8f?auto=format&fit=crop&q=80&w=2070",
+      img: "/images/ipageums.jpg",
       link: "https://ipageums.com/"
     },
     {
@@ -30,7 +30,7 @@ const UseCases = () => {
       subtitle: "IPage Drone Simulator",
       desc: "Marketing and lead conversion for drone simulation.",
       details: "Dev AI Chat drives demo download conversions and licence inquiries. Marketing AI generates targeted outreach to RPTOs, engineering colleges, and defence organisations.",
-      img: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=80&w=2070",
+      img: "/images/dronesimulator.png",
       icon: null,
       link: "https://www.dronesimulator.pro/"
     },
@@ -40,7 +40,7 @@ const UseCases = () => {
       subtitle: "Drone TV",
       desc: "AI content tools for media creators and teams.",
       details: "AI marketing and content tools assist creators and media teams in producing descriptions, SEO-optimised video titles, and audience engagement campaigns at scale.",
-      img: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&q=80&w=2070",
+      img: "/images/dronetv.jpg",
       icon: Video,
       link: "https://www.dronetv.in/"
     },
@@ -50,9 +50,9 @@ const UseCases = () => {
       subtitle: "Virel Biz",
       desc: "Insight and sales AI for marketplace logistics.",
       details: "Insight and sales AI helps marketplace operators understand buyer patterns, identify high-value vendor categories, and automate follow-up sequences for active listings.",
-      img: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=2070",
+      img: "/images/virelbiz.jpg",
       icon: Building2,
-      link: "https://vixelbiz.com/"
+      link: "https://virelbiz.com/"
     },
     {
       id: "3d",
@@ -60,7 +60,7 @@ const UseCases = () => {
       subtitle: "IPage Vision",
       desc: "Project coordination and briefing automation.",
       details: "Automate client briefing capture, project status updates, and delivery notifications. Dev AI reduces coordination overhead for the visualisation team across concurrent projects.",
-      img: "https://images.unsplash.com/photo-1617802690992-15d93263d3a9?auto=format&fit=crop&q=80&w=2070",
+      img: "/images/ipagevision.jpg",
       icon: Rotate3D,
       link: "https://www.ipagevision.com/"
     }
@@ -105,12 +105,11 @@ const UseCases = () => {
               }}
               className="group relative aspect-video md:aspect-[16/9] rounded-2xl overflow-hidden bg-surface cursor-pointer border border-outline-variant/10 shadow-lg shadow-black/20 hover:border-primary/30 transition-colors"
             >
-              {/* Background Image */}
               {item.img && (
                 <>
-                  <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-background/10 z-10" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background via-black/30 to-transparent z-10 opacity-60 group-hover:opacity-100 transition-opacity" />
                   <img
-                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    className="absolute inset-0 w-full h-full object-contain p-2 bg-surface-high transition-transform duration-700 group-hover:scale-105"
                     src={item.img}
                     alt={item.title}
                     referrerPolicy="no-referrer"
