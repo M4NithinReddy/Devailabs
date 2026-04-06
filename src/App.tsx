@@ -25,6 +25,17 @@ export default function App() {
   const [isLoading, setIsLoading] = React.useState(true);
 
   React.useEffect(() => {
+    // Prevent browser from restoring previous scroll position
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    
+    // Clear hash and force scroll to top on refresh
+    window.scrollTo(0, 0);
+    if (window.location.hash) {
+      window.history.replaceState(null, '', window.location.pathname + window.location.search);
+    }
+
     // Artificial delay to allow preloader to animate nicely
     const timer = setTimeout(() => {
       setIsLoading(false);
