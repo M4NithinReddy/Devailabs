@@ -109,7 +109,16 @@ const ConnectorLine = ({ index }: { index: number }) => (
 );
 
 /* ── single step card ─────────────────────────────────────── */
-const StepCard = ({ step, index }: { step: typeof steps[0]; index: number }) => {
+interface Step {
+  id: string;
+  num: number;
+  title: string;
+  desc: string;
+  icon: React.ComponentType;
+  accent: string;
+}
+
+const StepCard: React.FC<{ step: Step; index: number }> = ({ step, index }) => {
   const ref = React.useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
   const Icon = step.icon;
@@ -120,14 +129,14 @@ const StepCard = ({ step, index }: { step: typeof steps[0]; index: number }) => 
       initial={{ opacity: 0, y: 50 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6, delay: index * 0.12, ease: [0.25, 0.46, 0.45, 0.94] }}
-      className="relative flex-1 min-w-[180px] group"
+      className="relative flex-1 min-w-[180px] group flex flex-col"
     >
       {/* connector */}
       {index < steps.length - 1 && <ConnectorLine index={index} />}
 
       {/* card */}
       <div
-        className="relative rounded-2xl p-4 pb-4 text-center transition-all duration-500 cursor-default"
+        className="relative h-full flex flex-col rounded-2xl p-4 pb-4 text-center transition-all duration-500 cursor-default"
         style={{
           background: 'rgba(35, 38, 44, 0.35)',
           backdropFilter: 'blur(16px)',
@@ -199,7 +208,7 @@ const StepCard = ({ step, index }: { step: typeof steps[0]; index: number }) => 
         </h4>
 
         {/* description */}
-        <p className="text-on-surface-variant text-xs leading-snug">
+        <p className="text-on-surface-variant text-xs leading-snug flex-grow">
           {step.desc}
         </p>
 
@@ -284,7 +293,9 @@ const Process = () => {
         {/* steps grid */}
         <div className="flex flex-col lg:flex-row gap-4 lg:gap-4 items-stretch">
           {steps.map((step, i) => (
-            <StepCard key={step.id} step={step} index={i} />
+            <React.Fragment key={step.id}>
+              <StepCard step={step} index={i} />
+            </React.Fragment>
           ))}
         </div>
 
