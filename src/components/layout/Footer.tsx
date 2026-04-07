@@ -45,7 +45,7 @@ const Footer = () => (
               { name: 'IPage Drone Simulator', link: 'https://www.dronesimulator.pro/' },
               { name: 'IPage Vision', link: 'https://www.ipagevision.com/' },
               { name: 'DroneTV', link: 'https://www.dronetv.in/' },
-              { name: 'VirelBiz', link: 'https://vixelbiz.com/' }
+              { name: 'VirelBiz', link: 'https://virelbiz.com/' }
             ].map((item) => (
               <a
                 key={item.name}

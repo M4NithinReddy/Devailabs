@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { motion } from 'motion/react';
+import { ArrowRight } from 'lucide-react';
 import InteractiveDotWave from '../ui/InteractiveDotWave';
 
 const Hero = ({ onOpenModal }: { onOpenModal: (type: string) => void }) => (
@@ -43,16 +44,22 @@ const Hero = ({ onOpenModal }: { onOpenModal: (type: string) => void }) => (
       </p>
       <div className="flex flex-wrap justify-center gap-6">
         <button
-          onClick={() => onOpenModal('products')}
-          className="primary-gradient text-on-primary px-8 py-4 rounded-md font-bold transition-all hover:shadow-[0_0_30px_rgba(255,193,7,0.3)]"
+          onClick={() => {
+            window.location.hash = '#products';
+          }}
+          className="group flex items-center gap-2 primary-gradient text-on-primary px-8 py-4 rounded-md font-bold transition-all hover:shadow-[0_0_30px_rgba(255,193,7,0.3)] shadow-lg active:scale-95 cursor-pointer"
         >
           Explore Products
+          <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
         </button>
         <button
-          onClick={() => onOpenModal('how-it-works')}
-          className="glass-card text-on-surface px-8 py-4 rounded-md font-bold border border-outline-variant/20 hover:bg-surface-high/60 transition-all"
+          onClick={() => {
+            window.location.hash = '#contact';
+          }}
+          className="group flex items-center gap-2 glass-card text-on-surface px-8 py-4 rounded-md font-bold border border-outline-variant/20 hover:bg-surface-high/60 transition-all active:scale-95 shadow-md cursor-pointer"
         >
           How It Works
+          <ArrowRight className="w-5 h-5 opacity-70 transition-transform duration-300 group-hover:translate-x-1 group-hover:opacity-100" />
         </button>
       </div>
     </motion.div>
