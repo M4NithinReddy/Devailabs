@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
 
-import devProfile from '../../assets/dev-profile.png';
-import preethamProfile from '../../assets/preetham-profile.png';
-import vamsiProfile from '../../assets/vamsi-profile.png';
-import poorvekProfile from '../../assets/poorvek-profile.png';
-import kamalaProfile from '../../assets/kamala-profile.png';
+import devProfile from '../../assets/preetham-profile-new.png';
+import preethamProfile from '../../assets/dev-profile-new.png';
+import vamsiProfile from '../../assets/vamsi-profile-new.png';
+import poorvekProfile from '../../assets/poorvek-profile-new.png';
+import kamalaProfile from '../../assets/kamala-profile-new.png';
 
 const Team = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
@@ -92,10 +92,10 @@ const Team = () => {
                 className="overflow-hidden mb-0 cursor-pointer"
                 onClick={() => setActiveBioIndex(activeBioIndex === i ? null : i)}
               >
-                <div className="aspect-square rounded-xl bg-surface mb-4 overflow-hidden border border-primary/20 relative shadow-2xl">
+                <div className="aspect-square rounded-xl bg-transparent mb-4 overflow-hidden border-0 relative shadow-2xl">
                   <img
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    style={{ objectPosition: 'center 20%' }}
+                    className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
+                    style={{ objectPosition: 'center center' }}
                     src={member.img}
                     alt={member.name}
                     referrerPolicy="no-referrer"

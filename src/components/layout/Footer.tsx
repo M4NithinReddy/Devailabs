@@ -64,13 +64,13 @@ const Footer = () => (
         <div className="flex flex-col gap-6">
           <h4 className="font-label text-[10px] uppercase tracking-[0.2em] text-primary font-bold">Contact</h4>
           <div className="flex flex-col gap-3">
-            <a className="font-body text-sm text-on-surface-variant hover:text-primary transition-colors duration-300" href="mailto:bd@devailabs.in">bd@devailabs.in</a>
-            <a className="font-body text-sm text-on-surface-variant hover:text-primary transition-colors duration-300" href="tel:+917799100040">+91 7799 1000 40</a>
-            <div className="font-body text-sm text-on-surface-variant cursor-default leading-relaxed">
+            <div className="font-body text-sm text-on-surface-variant cursor-default leading-relaxed mb-1">
               5A/6B, White Waters,<br />
               Timber Lake Colony, Shaikpet,<br />
               Hyderabad - 500008 India
             </div>
+            <a className="font-body text-sm text-on-surface-variant hover:text-primary transition-colors duration-300" href="mailto:bd@devailabs.in">bd@devailabs.in</a>
+            <a className="font-body text-sm text-on-surface-variant hover:text-primary transition-colors duration-300" href="tel:+917799100040">+91 7799 1000 40</a>
             <div className="mt-4 flex flex-col gap-3">
               <a className="font-body text-sm text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Request a Demo</a>
               <a className="font-body text-sm text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Partner With Us</a>
